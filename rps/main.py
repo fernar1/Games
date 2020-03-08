@@ -3,7 +3,7 @@
 """
 Created on Sun Feb 23 14:18:56 2020
 @author: fernar1
-@desc: code for classsic rock paper scissors game
+@desc: code for classic rock paper scissors game
 """
 
 import random
@@ -19,7 +19,7 @@ def process_user_choice(user_choice):
     
     comp_paper_results = {
                 'Rock': 'Lose',
-                'Paper': 'Tied',
+                'Paper': 'Tied',s
                 'Scissor': 'Win'
             }
     

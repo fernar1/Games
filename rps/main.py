@@ -19,7 +19,7 @@ def process_user_choice(user_choice):
     
     comp_paper_results = {
                 'Rock': 'Lose',
-                'Paper': 'Tied',s
+                'Paper': 'Tied',
                 'Scissor': 'Win'
             }
     

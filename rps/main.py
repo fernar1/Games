@@ -10,42 +10,35 @@ import random
 
 
 def process_user_choice(user_choice):
-        
-    comp_rock_results = {
+    rock_result_list = [    
+            {
                 'Rock': 'Tied',
                 'Paper': 'Win',
                 'Scissor': 'Lose'
-            }
+            },
     
-    comp_paper_results = {
+            {
                 'Rock': 'Lose',
                 'Paper': 'Tied',
                 'Scissor': 'Win'
-            }
+            },
     
-    comp_scissor_results = {
+            {
                 'Rock': 'Lose',
                 'Paper': 'Win',
                 'Scissor': 'Tied'
             }
+    ]
     
- 
-    if  user_choice not in comp_rock_results:
+    comp_choice_lst = ['rock', 'paper', 'Scissor']
+    
+    if  user_choice not in rock_result_list[0]:
         raise ValueError('User choice is beyond range')
         
-    comp_choice = random.randint(1,3)
-    if comp_choice == 1:
-        print ('Computer chooses Rock')
-        result = comp_rock_results[user_choice]
-    elif comp_choice == 2:
-        print ('Computer chooses Paper')
-        result = comp_paper_results[user_choice]
-    else:
-        print ('Computer chooses Scissor')
-        result = comp_scissor_results[user_choice]
-    
-    return result
-    
+    comp_choice = random.randint(0,2)
+    return rock_result_list[comp_choice][user_choice], \
+    comp_choice_lst[comp_choice]
+   
 
 def main():
     user_menu = {
@@ -68,7 +61,9 @@ def main():
             elif (user_choice == 4):
                 break;
             else:
-                result = process_user_choice(user_menu[user_choice])
+                result, comp_choice = \
+                process_user_choice(user_menu[user_choice])
+            print ('The computer chooses ' + comp_choice)
             print('You ' + result)
             input('Press any key to continue')
         except ValueError:

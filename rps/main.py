@@ -7,7 +7,6 @@ Created on Sun Feb 23 14:18:56 2020
 """
 
 import random
-import tkinter as tk
 from appJar import gui
 
 def process_user_choice(user_choice):

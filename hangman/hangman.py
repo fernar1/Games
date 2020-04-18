@@ -7,27 +7,27 @@ Created on Sat Apr  4 21:21:35 2020
 import random
 import decorators
 
-class Hangman():
+
+class Hangman:
     """
     Class that encapsulates the logic for the hangman game
     """
+
     def __init__(self):
         self.init_data()
-        
-    
+
     def init_data(self):
         """
         Reads a random word from the hangman.txt file and also
         initalizes the data variables for new round
         """
         self._num_guess = 6
-        
-        with open('hangman.txt') as f:
+
+        with open("hangman.txt") as f:
             lines = f.read().splitlines()
             self._word = lines[random.randint(0, len(lines) - 1)]
-            self._lst_guess = ['_' ] * len(self._word)
-        
-   
+            self._lst_guess = ["_"] * len(self._word)
+
     @property
     def guess_word_len(self):
         """
@@ -35,7 +35,6 @@ class Hangman():
         """
         return len(self._word)
 
-    
     @property
     def guess_word(self):
         """
@@ -43,7 +42,6 @@ class Hangman():
         """
         return self._word
 
-    
     @property
     def num_guess(self):
         """
@@ -51,12 +49,10 @@ class Hangman():
         """
         return self._num_guess
 
-
     @num_guess.setter
     def num_guess(self, num_guess):
         self._num_guess = num_guess
 
-    
     @property
     def lst_guess(self):
         """
@@ -64,14 +60,12 @@ class Hangman():
         """
         return self._lst_guess
 
-    
     def guess_remain(self):
         """
         Function to check if guesses are remaining
         Returns True, if guesses are remaining otherwise false
         """
         return self._num_guess > 0
-
 
     @decorators.is_single_alphabet((1,))
     def process_guess(self, guess_char):
@@ -87,7 +81,6 @@ class Hangman():
             match_found = False
         return match_found
 
-    
     def _replace_guess_char(self, guess_char):
         start = 0
         while True:
@@ -96,10 +89,9 @@ class Hangman():
                 break
             else:
                 self._lst_guess[index] = guess_char
-                start  = index + 1
-                if '_' not in self._lst_guess:
+                start = index + 1
+                if "_" not in self._lst_guess:
                     self.num_guess = -1
 
-                    
     def get_result(self):
         return self.num_guess == -1
